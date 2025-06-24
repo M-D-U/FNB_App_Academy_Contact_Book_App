@@ -34,10 +34,10 @@
         document.getElementById("homeLink").addEventListener("click", homeLink);
         document.getElementById("editContact").addEventListener("click", editContact);
         document.getElementById("submitForm").addEventListener("click", submitForm);
+        document.getElementById("deleteContact").addEventListener("click", deleteContact);
 
         function getId(){
             var url = window.location.href;
-            // console.log(url);
             var pos = url.search("=");
             var id = url.slice(pos + 1);
             return id;
@@ -52,7 +52,6 @@
             .then(function(data){
                 //display contact information
                 displayOutput(data);
-                // console.log(data)
             })
         }
 
@@ -111,6 +110,23 @@
 
         }
 
+        function deleteContact(){
+            var confirmDelete = confirm("Delete contact. Are you sure");
+
+            if(confirmDelete){
+                fetch(rootPath + 'controller/delete-contact/?'+ id)
+                .then(function(response){
+                    return response.text();
+                })
+                .then(function(data){
+                    if(data == 1){
+                        homeLink();
+                    }else{
+                        alert(data);
+                    }
+                })
+            }
+        }
 
     </script>
 </body>
