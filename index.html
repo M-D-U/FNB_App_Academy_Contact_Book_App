@@ -24,9 +24,7 @@
                 return response.json();
             })
             .then(function(data){
-                console.log(data);
                 displayOutput(data);
-                console.log("contacts fetched");
                 
             })        
         }
@@ -47,7 +45,6 @@
         }
 
         function addContact(){
-            console.log("contact clicked");
             window.open("add-contact.html", "_self");
         }
 
